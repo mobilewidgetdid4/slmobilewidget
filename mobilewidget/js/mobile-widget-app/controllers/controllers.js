@@ -185,6 +185,7 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
     $scope.currentHeroSlide = 1;
     $scope.totalHeroslides = 0;
     $scope.retailers = [];
+    $scope.retailer = null;
     $scope.init = function() 
     {        
         // Get all the cookies pairs in an array
@@ -199,11 +200,20 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
             if($scope.retailerid && $scope.retailers.length)
             {
 
+                angular.forEach($scope.retailers, function(retailerfound, index){
+                      if(retailerfound.RetailerID == $scope.retailerid)  
+                      {
+                        $scope.retailer =  retailerfound;
+                      }
+                });
+
                 $http.jsonp('http://api2.shoplocal.com/retail/42ace9ccb488c1dd/2013.1/json/fullpromotionpages?storeid='+$scope.storeid+'&promotioncode='+$scope.promotioncode+'&callback=JSON_CALLBACK').success(function(data) {
                     angular.forEach(data.Results, function(page, index){
                             page.ImageLocation = page.ImageLocation.replace("200","300");
                             $scope.pages.push(page);        
                     });
+
+
 
                     $scope.totalHeroslides = $scope.pages.length; 
 
