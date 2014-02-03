@@ -10,7 +10,7 @@ window.jq$ = jQuery.noConflict(true);
 
 var $ = window.jq$;
 
-//$('head').append('<script type="text/javascript" src="http://www.slmobilewidgetdid4.com/js/bindevents.js"></script>');
+//$('head').append('<script type="text/javascript" src="http://localhost/js/bindevents.js"></script>');
 
 //Get the query params
 function parseQuery ( query ) {
@@ -47,7 +47,7 @@ var params = parseQuery( queryString );
 //Create the mobile widget iframe. This contains the angular view for retailer list.
 var params = parseQuery(queryString);
 var $newdiv1 = $( "<iframe id='mobilewidget'/>" );
-$newdiv1.attr('src', 'http://www.slmobilewidgetdid4.com');
+$newdiv1.attr('src', 'http://localhost');
 $newdiv1.css( "height", params['height']+"px");
 $newdiv1.attr('frameBorder','0');
 $newdiv1.css( "width", params['width']+"px");
@@ -67,10 +67,12 @@ $heroPromotion.css("border","5px");
 $( "body" ).append($heroPromotion);
 ($heroPromotion).hide();
 
-//Create the close button.
-$closebtn = $("<div id='closeBtn'/>");
-
-
+function createCloseBtn(){
+	//Create the close button.
+	$closebtn = $("<div id='closeBtn'/>");
+	$closebtn.html("Close");
+	$heroPromotion.prepend($closebtn);
+}
 //Create the iframe inside the hero promotion div. This will include the angular view for retailer.html
 var $mobilewidgetheropromo = $( "<iframe id='mobilewidget-heropromo'/>" );
 $mobilewidgetheropromo.css( "height", "100%");
@@ -79,7 +81,7 @@ $mobilewidgetheropromo.attr('frameBorder','0');
 $mobilewidgetheropromo.css( "100%");
 $mobilewidgetheropromo.css("top",params['top']+"px");
 $mobilewidgetheropromo.css("left",params['left']+"px");
-($heroPromotion).html($mobilewidgetheropromo);
+($heroPromotion).append($mobilewidgetheropromo);
 
 var iframe = document.getElementById('mobilewidget');
 iframe = iframe.contentWindow || iframe.contentDocument;
@@ -101,33 +103,24 @@ var _timer=setInterval(function()
 			var promotioncode = e.target.getAttribute("data-heropromocode");
 			
 			$heroPromotion.html();
-			$mobilewidgetheropromo.attr('src', 'http://www.slmobilewidgetdid4.com/#/retailer:'+retailerid+"/promotioncode:"+promotioncode+"/storeid:"+storeid);
+			$mobilewidgetheropromo.attr('src', 'http://localhost/#/retailer:'+retailerid+"/promotioncode:"+promotioncode+"/storeid:"+storeid);
 			
 			$heroPromotion.html($mobilewidgetheropromo);
+			createCloseBtn();
+
+			$heroPromotion.delegate("#closeBtn", "click", function() {
+				$heroPromotion.hide();
+			});
 			$heroPromotion.show();
-/*
-			var _timerHeroPromo=setInterval(function()
-			{
-					var heroPromotionFrame = $("#mobilewidget").contents().find('body');
-					if(heroPromotionFrame.contents().find("closeControl").length>0)
-					{
-						clearInterval(_timerHeroPromo);	
-						heroPromotionFrame.contents.on("click",".closeControl",function(e){
-							$heroPromotion.html();
-							$heroPromotion.close();
-						})
-					}		
-			},1000);
-*/
 		})
 	}
 
 }, 1000)
 
 /*
-var iframe = document.getElementById('mobilewidget');
-var b = $("#mobilewidget").contents().find('body');
-b.contents().on("click",".action-retailer",function(e){
-				alert('hello');
-			})
-			*/
+	var iframe = document.getElementById('mobilewidget');
+	var b = $("#mobilewidget").contents().find('body');
+	b.contents().on("click",".action-retailer",function(e){
+					alert('hello');
+				})
+*/
