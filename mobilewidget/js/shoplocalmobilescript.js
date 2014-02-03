@@ -10,7 +10,6 @@ window.jq$ = jQuery.noConflict(true);
 
 var $ = window.jq$;
 
-$('head').append('<script type="text/javascript" src="http://localhost/js/bindevents.js"></script>');
 $('head').append('<link rel="stylesheet" type="text/css" href="http://localhost/css/main.css">');
 
 
