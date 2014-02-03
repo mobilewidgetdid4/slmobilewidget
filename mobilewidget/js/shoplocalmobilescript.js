@@ -10,7 +10,9 @@ window.jq$ = jQuery.noConflict(true);
 
 var $ = window.jq$;
 
-//$('head').append('<script type="text/javascript" src="http://localhost/js/bindevents.js"></script>');
+$('head').append('<script type="text/javascript" src="http://localhost/js/bindevents.js"></script>');
+$('head').append('<link rel="stylesheet" type="text/css" href="http://localhost/css/main.css">');
+
 
 //Get the query params
 function parseQuery ( query ) {
@@ -73,6 +75,7 @@ function createCloseBtn(){
 	$closebtn.html("Close");
 	$heroPromotion.prepend($closebtn);
 }
+
 //Create the iframe inside the hero promotion div. This will include the angular view for retailer.html
 var $mobilewidgetheropromo = $( "<iframe id='mobilewidget-heropromo'/>" );
 $mobilewidgetheropromo.css( "height", "100%");

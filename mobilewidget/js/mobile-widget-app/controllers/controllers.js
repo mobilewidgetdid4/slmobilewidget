@@ -31,7 +31,7 @@ app.config(function($routeProvider) {
 
     });
 
-
+var retailersToStore = []
 
 //Main controller that loads the list of retailer logos
 app.controller("mainController", function($scope, $http){
@@ -42,21 +42,20 @@ app.controller("mainController", function($scope, $http){
     
     $scope.init = function() 
     {
-
         $scope.currentSlide = 1;
         $scope.totalSlides = 0;
         $scope.initialLoad = true;
         $scope.autoslide = true;
 
-        $http.jsonp('http://api2.shoplocal.com/retail/5369d0c743bd59c2/2013.1/json/multiretailerpromotions?radius=100&siteid=1553&MultRetPromoSort=1&pageimagewidth=156&citystatezip=60601&callback=JSON_CALLBACK').success(function(data) {
-            console.log(data.Results);
+        $http.jsonp('http://api2.shoplocal.com/retail/5369d0c743bd59c2/2013.1/json/multiretailerpromotions?radius=5&siteid=1553&MultRetPromoSort=1&pageimagewidth=156&citystatezip=60601&callback=JSON_CALLBACK').success(function(data) {
 
             var logosperpage = 6;
             
             angular.forEach(data.Results, function(retailer, index){
                     $scope.retailers.push(retailer);
             });
-            
+            retailersToStore = data.Results;
+
             //Split the retailers array into chuncks
             for (var i=0; i<$scope.retailers.length; i+=logosperpage) {
                 var slide = $scope.retailers.slice(i,i+logosperpage);
@@ -169,10 +168,10 @@ app.controller("mainController", function($scope, $http){
     };
 
     var clearInitialLoad = function(){
-            if($scope.initialLoad)
-            {
-                $scope.initialLoad = false;
-            }
+        if($scope.initialLoad)
+        {
+            $scope.initialLoad = false;
+        }
     }
 });
 
@@ -185,35 +184,48 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
     $scope.pages = [];
     $scope.currentHeroSlide = 1;
     $scope.totalHeroslides = 0;
-
+    $scope.retailers = [];
     $scope.init = function() 
     {        
+        // Get all the cookies pairs in an array
+
         var noadds = document.getElementById("noadds");
         noadds.style.display = 'none';
-        if($scope.retailerid)
-        {
-            $http.jsonp('http://api2.shoplocal.com/retail/42ace9ccb488c1dd/2013.1/json/fullpromotionpages?storeid='+$scope.storeid+'&promotioncode='+$scope.promotioncode+'&callback=JSON_CALLBACK').success(function(data) {
-            //$http.jsonp('http://api2.shoplocal.com/retail/5369d0c743bd59c2/2013.1/json/multiretailerpromotions?radius=100&siteid=1553&MultRetPromoSort=1&pageimagewidth=156&citystatezip=60601&callback=JSON_CALLBACK').success(function(data) {            
-                angular.forEach(data.Results, function(page, index){
-                        page.ImageLocation = page.ImageLocation.replace("200","300");
-                        $scope.pages.push(page);        
+        
+        $http.jsonp('http://api2.shoplocal.com/retail/5369d0c743bd59c2/2013.1/json/multiretailerpromotions?radius=5&siteid=1553&MultRetPromoSort=1&pageimagewidth=156&citystatezip=60601&callback=JSON_CALLBACK').success(function(data) {
+
+            $scope.retailers = data.Results;
+
+            if($scope.retailerid && $scope.retailers.length)
+            {
+
+                $http.jsonp('http://api2.shoplocal.com/retail/42ace9ccb488c1dd/2013.1/json/fullpromotionpages?storeid='+$scope.storeid+'&promotioncode='+$scope.promotioncode+'&callback=JSON_CALLBACK').success(function(data) {
+                    angular.forEach(data.Results, function(page, index){
+                            page.ImageLocation = page.ImageLocation.replace("200","300");
+                            $scope.pages.push(page);        
+                    });
+
+                    $scope.totalHeroslides = $scope.pages.length; 
+
+                    var pleasewait = document.getElementById("pleasewait");
+                    pleasewait.style.display='none';
+
+                    if($scope.pages.length == 0)
+                    {
+                        noadds.style.display = 'block';                    
+                    }
+
+                }).error(function(error) {
+         
                 });
+            }
 
-                $scope.totalHeroslides = $scope.pages.length; 
-                console.log($scope.totalHeroslides);
-                var pleasewait = document.getElementById("pleasewait");
-                pleasewait.style.display='none';
-
-                if($scope.pages.length == 0)
-                {
-                    noadds.style.display = 'block';                    
-                }
-
-
-            }).error(function(error) {
+        }).error(function(error) {
      
-            });
-        }
+        });
+
+
+
     };
 
     $scope.goHeroPromoForward = function () {
