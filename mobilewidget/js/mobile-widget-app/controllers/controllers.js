@@ -117,7 +117,6 @@ app.controller("mainController", function($scope, $http){
             momentum: false,
             hScrollbar: false,
             onScrollEnd: function () {
-                alert('hi');
             } 
         };
 
