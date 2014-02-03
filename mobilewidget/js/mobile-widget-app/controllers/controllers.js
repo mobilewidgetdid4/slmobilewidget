@@ -49,7 +49,7 @@ app.controller("mainController", function($scope, $http){
 
         $http.jsonp('http://api2.shoplocal.com/retail/5369d0c743bd59c2/2013.1/json/multiretailerpromotions?radius=5&siteid=1553&MultRetPromoSort=1&pageimagewidth=156&citystatezip=60601&callback=JSON_CALLBACK').success(function(data) {
 
-            var logosperpage = 6;
+            var logosperpage = 2;
             
             angular.forEach(data.Results, function(retailer, index){
                     $scope.retailers.push(retailer);
@@ -61,8 +61,8 @@ app.controller("mainController", function($scope, $http){
                 var slide = $scope.retailers.slice(i,i+logosperpage);
                 $scope.slides.push(slide);
             }
-
-            $scope.totalSlides = $scope.slides.length;
+            $scope.totalSlides = $scope.slides.length;            
+            $scope.scrollerWidth = 100 * $scope.totalSlides;
 
             if($scope.autoslide)
             {
@@ -117,6 +117,7 @@ app.controller("mainController", function($scope, $http){
             momentum: false,
             hScrollbar: false,
             onScrollEnd: function () {
+                alert('hi');
             } 
         };
 
