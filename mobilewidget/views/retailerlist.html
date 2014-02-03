@@ -1,8 +1,11 @@
 <div  ng-controller="mainController" ng-init="init()">
 <img id="pleasewait" src="img/PleaseWait.gif">
+<div id="SL_MarketingMsg">
+	hurry up bro!
+</div>
 <div id="scrollcontainer">
 	<div id="CarouselWrapper" ng-iscroll="wrapper">
-	        <div id="scroller" style="{{scrollerWidth}}">
+	        <div id="scroller" style="width:{{scrollerWidth}};">
                 <div ng-repeat="slide in slides" style="float:left;">
 					<div ng-repeat="retailer in slide" style="float:left;">
 						<div class="action-retailer retailer_logo"  style="background-image:url(http://akimages.shoplocal.com/dyn_li/50.50.85.0/retailerlogos/{{retailer.PRetailerLogoLocation}});" ng-click="openHeroPromotion($index,retailer.RetailerID)"
