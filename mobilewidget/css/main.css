@@ -5,7 +5,7 @@
     z-index: 100;
 }
 #SL_MarketingMsg {
-    width:100px;
+    width:120px;
     float:left;
 }
 
@@ -47,9 +47,10 @@
 .retailer_logo {
     background-position: center center;
     background-repeat: no-repeat;
-    height: 40px;
-    margin: 0 auto;
-    width: 60px;
+    height:40px;
+    background-size: contain;
+    margin: 5px 10px;
+    width: 80px;
     cursor: pointer;
 }
 
