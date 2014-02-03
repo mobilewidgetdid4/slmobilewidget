@@ -1,0 +1,18 @@
+<div class="heroPromotion" ng-controller="retailerController" ng-init="init()" style="height:100px;">
+	<img id="pleasewait" src="img/PleaseWait.gif" width="200px;">
+	<div class="closeControl" style="float:right;cursor:pointer;">
+		Close	
+	</div><br/>
+	<div class="hero-controls">
+		<div class="prev"  ng-click="goHeroPromoBack()">Prev</div>
+		<div class="next" ng-click="goHeroPromoForward()" >Next</div>
+	</div>
+	<div id="PromotionPageCarouselWrapper" ng-iscroll="wrapper-hero">
+	    <div id="scroller">
+	        <div ng-repeat="page in pages" style="float:left;">
+					<img class="hero-promoImage" src="{{page.ImageLocation}}"/>
+	        </div>
+	    </div>
+	</div>
+	<div id="noadds" style="display:none;">Sorry no adds available for store</div>
+</div>

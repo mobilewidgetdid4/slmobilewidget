@@ -1,0 +1,87 @@
+
+html, body {
+    margin: 0; padding: 0; border-width: 0; height: 100%;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    line-height: 0px !important;
+    font-size:12px !important;
+    overflow: hidden;
+}
+
+#CarouselWrapper {
+    position: relative;
+    width: 363px;
+    z-index: 100;
+}
+
+#scroller {
+    height: 100%;
+    width: 10000px;
+    position:relative;
+}
+
+
+.carousel-control {
+    background-color: transparent;
+    background-image: url("../img/MeijerWidget_Sprite.png");
+    background-repeat: no-repeat;
+    border: medium none;
+    border-radius: 0 0 0 0;
+    height: 34px;
+    opacity: 1;
+    outline: medium none;
+    overflow: hidden;
+    text-indent: -99px;
+    width: 34px;
+    position:absolute;
+    cursor: pointer;
+    top:51px;
+    z-index: 102;
+    }
+.prev {
+    float:left;
+    cursor: pointer;
+}
+.next {
+    float:right;
+    cursor: pointer;
+}
+.carousel-control:hover {
+    opacity:0.6;
+}
+
+.retailer_logo {
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 40px;
+    margin: 0 auto;
+    width: 60px;
+    cursor: pointer;
+}
+
+.controls{
+    width:300px;
+}
+
+.hero-controls
+{
+    postion:absolute;
+    width:300px;
+    heigh:25px;
+    top:0px;
+    z-index: 100;
+}
+
+
+
+.heroPromotion{
+    postion:absolute;
+    line-height: 20px;    
+}
+
+#PromotionPageCarouselWrapper{
+    position: relative;
+    width: 300px;
+    z-index: 100;
+    top:20px;
+}
