@@ -1,5 +1,6 @@
 
-html, body {
+#mobilewidget html,
+#mobilewidget body {
     margin: 0; padding: 0; border-width: 0; height: 100%;
     padding-left: 0px !important;
     padding-right: 0px !important;
@@ -84,4 +85,13 @@ html, body {
     width: 300px;
     z-index: 100;
     top:20px;
+}
+
+
+
+/*mike styles*/
+#hero-promotion {
+    position:absolute;
+    height:500px;
+    background:red;
 }

@@ -60,12 +60,9 @@ $( "body" ).prepend($newdiv1);
 
 //Create the div for hero promotion.
 var $heroPromotion = $( "<div id='hero-promotion'/>" );
-$heroPromotion.css("position","absolute");
-$heroPromotion.css( "height", "500px");
 $heroPromotion.css( "width", params['width']+"px");
 $heroPromotion.css("top",params['height']+"px");
 $heroPromotion.css("left",params['left']+"px");
-$heroPromotion.css("border","5px");
 $( "body" ).append($heroPromotion);
 ($heroPromotion).hide();
 
