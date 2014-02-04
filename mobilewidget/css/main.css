@@ -1,3 +1,4 @@
+
 #CarouselWrapper {
     position: relative;
     width: 200px;
@@ -100,13 +101,21 @@
 }
 
 /*idp*/
+.itemDetail {
+    margin:0 10px;
+}
+.SL_BackHeader {
+    padding-bottom:15px;
+}
 .SL_ItemImage {
     width:200px;
+    padding-bottom:15px;
 }
 .SL_DealDescription {
     color:#BE1E2D;
     font-size:35px;
-    margin:0 0 6px 0;
+    line-height:35px;
+    margin:0;
 }
 .SL_PriceQualifier {
     font-size:12px;

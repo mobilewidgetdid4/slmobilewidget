@@ -22,7 +22,7 @@
 	        <div ng-repeat="page in pages" style="float:left;">
 				<img class="hero-promoImage" id="heropromo_{{page.ID}}"  src="{{page.ImageLocation}}" usemap="#pagemap_{{page.ID}}"/>
 				<map id="pagemap_{{page.ID}}" name="pagemap_{{page.ID}}">
-							  <area shape="{{hotspot.ShapeString}}" coords="{{hotspot.adjcoordinates}}" href="http://www.slmobilewidgetdid4.com/#/listingid:{{hotspot.Listings[0].ID}}/storeid:{{storeid}}/retailerid:{{retailer.RetailerID}}/promotioncode:{{retailer.PromotionCode}}"  ng-repeat="hotspot in page.HotSpots" style="background-color:red;" alt="test">
+							  <area shape="{{hotspot.ShapeString}}" coords="{{hotspot.adjcoordinates}}" href="http://localhost/#/listingid:{{hotspot.Listings[0].ID}}/storeid:{{storeid}}/retailerid:{{retailer.RetailerID}}/promotioncode:{{retailer.PromotionCode}}"  ng-repeat="hotspot in page.HotSpots" style="background-color:red;" alt="test">
 				</map>
 				<div ng-switch on="{{page.drawHotSpots}}">
 				    <div ng-switch-when="0">

@@ -10,7 +10,7 @@ window.jq$ = jQuery.noConflict(true);
 
 var $ = window.jq$;
 
-$('head').append('<link rel="stylesheet" type="text/css" href="http://www.slmobilewidgetdid4.com/css/main.css">');
+$('head').append('<link rel="stylesheet" type="text/css" href="http://localhost/css/main.css">');
 
 
 //Get the query params
@@ -48,7 +48,7 @@ var params = parseQuery( queryString );
 //Create the mobile widget iframe. This contains the angular view for retailer list.
 var params = parseQuery(queryString);
 var $newdiv1 = $( "<iframe id='mobilewidget'/>" );
-$newdiv1.attr('src', 'http://www.slmobilewidgetdid4.com');
+$newdiv1.attr('src', 'http://localhost');
 $newdiv1.css( "height", params['height']+"px");
 $newdiv1.attr('frameBorder','0');
 $newdiv1.css( "width", params['width']+"px");
@@ -102,7 +102,7 @@ var _timer=setInterval(function()
 			var promotioncode = e.target.getAttribute("data-heropromocode");
 			
 			$heroPromotion.html();
-			$mobilewidgetheropromo.attr('src', 'http://www.slmobilewidgetdid4.com/#/retailer:'+retailerid+"/promotioncode:"+promotioncode+"/storeid:"+storeid);
+			$mobilewidgetheropromo.attr('src', 'http://localhost/#/retailer:'+retailerid+"/promotioncode:"+promotioncode+"/storeid:"+storeid);
 			
 			$heroPromotion.html($mobilewidgetheropromo);
 			createCloseBtn();
