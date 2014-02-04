@@ -213,7 +213,7 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
                 {
                     angular.forEach(data.Results, function(page, index)
                     {
-                            page.ImageLocation = page.ImageLocation.replace("200","300");
+                            page.ImageLocation = page.ImageLocation.replace("200","600");
                             if(page.HotSpots.length > 0 )
                             {
                                 angular.forEach(page.HotSpots, function(hotspot, index)

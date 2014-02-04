@@ -80,6 +80,9 @@
 .controls {
     width:300px;
 }
+.hero-promoImage {
+    width:300px;
+}
 #PromotionPageCarouselWrapper {
     position: relative;
     width: 300px;
