@@ -105,11 +105,14 @@
     margin:0 10px;
 }
 .SL_BackHeader {
-    padding-bottom:15px;
+    padding:10px 0;
 }
 .SL_ItemImage {
-    width:200px;
-    padding-bottom:15px;
+    width: 200px;
+    margin-bottom: 15px;
+    background: white;
+    padding: 0 50px;
+    border: 1px solid #ccc;
 }
 .SL_DealDescription {
     color:#BE1E2D;
@@ -138,6 +141,14 @@
     margin-right:12px;
 }
 
+/*Loaders*/
+#pleasewait {
+    width: 72px;
+    margin: 50px 124px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    border:1px solid #ccc;
+}
 
 
 
