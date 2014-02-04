@@ -108,10 +108,10 @@
     padding:10px 0;
 }
 .SL_ItemImage {
-    width: 200px;
+    width: 160px;
     margin-bottom: 15px;
     background: white;
-    padding: 0 50px;
+    padding: 5px 70px;
     border: 1px solid #ccc;
 }
 .SL_DealDescription {
