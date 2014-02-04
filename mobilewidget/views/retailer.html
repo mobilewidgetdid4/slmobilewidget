@@ -20,7 +20,17 @@
 	<div id="PromotionPageCarouselWrapper" ng-iscroll="wrapper-hero">
 	    <div id="scroller">
 	        <div ng-repeat="page in pages" style="float:left;">
-					<img class="hero-promoImage" src="{{page.ImageLocation}}"/>
+				<img class="hero-promoImage" id="heropromo_{{page.ID}}"  src="{{page.ImageLocation}}" usemap="#pagemap_{{page.ID}}"/>
+				<map id="pagemap_{{page.ID}}" name="pagemap_{{page.ID}}">
+							  <area shape="{{hotspot.ShapeString}}" coords="{{hotspot.adjcoordinates}}" href="http://www.yahoo.com" ng-repeat="hotspot in page.HotSpots" style="background-color:red;" alt="test">
+				</map>
+				<div ng-switch on="{{page.drawHotSpots}}">
+				    <div ng-switch-when="0">
+				    </div>
+				    <div ng-switch-default>
+						
+				    </div>
+				</div>
 	        </div>
 	    </div>
 	</div>
