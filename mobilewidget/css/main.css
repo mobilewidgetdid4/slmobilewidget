@@ -12,16 +12,17 @@
     width:120px;
 }
 #closeBtn {
-    position:absolute;
-    top:6px;
-    right:2px;
-    height:18px;
-    width:18px;
-    background:url(../img/Close.png) no-repeat top left;
-    background-size: contain;
-    overflow:hidden;
-    text-indent:-99px;
-    cursor:pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 30px;
+    width: 30px;
+    background: url(../img/Close.png) no-repeat top left;
+    background-size: 18px 18px;
+    background-position: 8px 7px;
+    overflow: hidden;
+    text-indent: -99px;
+    cursor: pointer;
 }
 #CarouselWrapper #scroller {
     /*banner scroller*/
@@ -43,7 +44,7 @@
 #hero-promotion {
     position:absolute;
     background:#F3F3F3;
-    height:100%;
+    height:2800px;
 }
 .SL_adHeader {
     height:30px;
