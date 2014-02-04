@@ -62,7 +62,7 @@ app.controller("mainController", function($scope, $http){
                 $scope.slides.push(slide);
             }
             $scope.totalSlides = $scope.slides.length;            
-            $scope.scrollerWidth = 100 * $scope.totalSlides;
+            $scope.scrollerWidth = 200 * $scope.totalSlides;
 
             if($scope.autoslide)
             {
@@ -207,10 +207,39 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
                       }
                 });
 
-                $http.jsonp('http://api2.shoplocal.com/retail/42ace9ccb488c1dd/2013.1/json/fullpromotionpages?storeid='+$scope.storeid+'&promotioncode='+$scope.promotioncode+'&callback=JSON_CALLBACK').success(function(data) {
-                    angular.forEach(data.Results, function(page, index){
+                var listingsExist = 0;
+
+                $http.jsonp('http://api2.shoplocal.com/retail/42ace9ccb488c1dd/2013.1/json/fullpromotionpages?storeid='+$scope.storeid+'&promotioncode='+$scope.promotioncode+'&callback=JSON_CALLBACK').success(function(data) 
+                {
+                    angular.forEach(data.Results, function(page, index)
+                    {
                             page.ImageLocation = page.ImageLocation.replace("200","300");
-                            $scope.pages.push(page);        
+                            if(page.HotSpots.length > 0 )
+                            {
+                                angular.forEach(page.HotSpots, function(hotspot, index)
+                                {
+                                    if(hotspot.Listings.length >0)
+                                    {
+                                        listingsExist = 1;
+
+                                        var hotspotShape = (hotspot.Shape === 1) ? "circle" : (hotspot.Shape === 2) ? "polygon" : "rect";
+                                        hotspot.ShapeString = hotspotShape;
+
+                                        var coordinates = "";
+                                        angular.forEach(hotspot.Coordinates,function(coordinate, index)
+                                        {
+                                            coordinates = coordinates + ","+ Math.round(coordinate*0.15);
+                                        });
+
+                                        coordinates = coordinates.substring(1);
+                                        hotspot.adjcoordinates = coordinates;
+                                    }
+                                });
+                            }
+
+                            page.drawHotSpots = listingsExist;
+
+                            $scope.pages.push(page);
                     });
 
 
