@@ -192,6 +192,9 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
     $scope.retailer = null;
     $scope.init = function() 
     {        
+
+        if($scope.retailerid)
+            $scope.retailerid = $scope.retailerid.replace("id","");
         // Get all the cookies pairs in an array
 
         var noadds = document.getElementById("noadds");
@@ -241,6 +244,10 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
 
                 var listingsExist = 0;
 
+                if(!$scope.promotioncode)
+                {      
+                    $scope.promotioncode = $scope.retailer.PromotionCode;
+                }
                 //Get the promotion pages for the retailer id requested.
                 $http.jsonp('http://api2.shoplocal.com/retail/5369d0c743bd59c2/2013.1/json/fullpromotionpages?storeid='+$scope.storeid+'&promotioncode='+$scope.promotioncode+'&callback=JSON_CALLBACK').success(function(data) 
                 {
