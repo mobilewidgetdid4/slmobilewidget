@@ -109,7 +109,7 @@ var _timer=setInterval(function()
 
 			$heroPromotion.delegate("#closeBtn", "click", function() {
 				//$heroPromotion.hide();
-				heroPromotion.slideUp("slow", function(){});
+				$heroPromotion.slideUp("slow", function(){});
 			});
 
 			$heroPromotion.slideDown("slow",function(){
