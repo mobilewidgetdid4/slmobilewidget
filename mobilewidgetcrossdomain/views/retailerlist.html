@@ -1,0 +1,20 @@
+<div  ng-controller="mainController" ng-init="init()">
+<img id="pleasewait" src="img/PleaseWait.gif">
+<div id="SL_MarketingMsg">
+	<img src="img/marketingMsg.png" />
+</div>
+<div id="scrollcontainer">
+	<div id="CarouselWrapper" ng-iscroll="wrapper">
+	        <div id="scroller" style="width:{{scrollerWidth}};">
+                <div ng-repeat="slide in slides" style="float:left;">
+					<div ng-repeat="retailer in slide" style="float:left;">
+						<div class="action-retailer SL_retailer_logo"  style="background-image:url(//akimages.shoplocal.com/dyn_li/160.160.85.0/retailerlogos/{{retailer.PRetailerLogoLocation}});" ng-click="openHeroPromotion($index,retailer.RetailerID)"
+						data-retailerid="{{retailer.RetailerID}}"  data-index="{{$index}}"
+						data-heropromocode = {{retailer.PromotionCode}} data-storeid = {{retailer.StoreID}}
+						></div>
+					</div>
+                </div>
+	        </div>
+	    </div>
+	</div>
+</div>

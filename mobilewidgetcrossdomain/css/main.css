@@ -1,0 +1,134 @@
+#CarouselWrapper {
+    position: relative;
+    width: 200px;
+    float:right;
+    z-index: 100;
+}
+#SL_MarketingMsg {
+    float:left;
+}
+#SL_MarketingMsg img {
+    width:120px;
+}
+#closeBtn {
+    position:absolute;
+    top:6px;
+    left:2px;
+    height:18px;
+    width:18px;
+    background:url(../img/Close.png) no-repeat top left;
+    background-size: contain;
+    overflow:hidden;
+    text-indent:-99px;
+    cursor:pointer;
+}
+#CarouselWrapper #scroller {
+    /*banner scroller*/
+    height: 100%;
+    width:2000px;
+    position:relative;
+}
+.SL_retailer_logo {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#scroller .SL_retailer_logo {
+    height:40px;
+    margin: 5px 10px;
+    width: 80px;
+    cursor: pointer;
+}
+#hero-promotion {
+    position:absolute;
+    background:#F3F3F3;
+    height:100%;
+}
+.SL_adHeader {
+    height:30px;
+    overflow:hidden;
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    background:white;
+}
+.SL_adHeader img {
+    max-width:80px;
+    max-height:20px;
+    float:left;
+    margin:5px 10px 5px 30px;   
+}
+.SL_adHeader p {
+    float:left;
+    margin:0;
+    line-height:30px;
+}
+.SL_adHeader a span {
+    font-size:9px;
+}
+.SL_adSubHeader {
+    height:20px;
+}
+.SL_adSubHeader img {
+    height: 15px;
+    display: inline;
+    margin: 3px;
+    margin-left:10px;
+    float: left;
+}
+.SL_adSubHeader p {
+    margin:0;
+    line-height:20px;
+    color:#929292;
+}
+.controls {
+    width:300px;
+}
+.hero-promoImage {
+    width:300px;
+}
+#PromotionPageCarouselWrapper {
+    position: relative;
+    width: 300px;
+    z-index: 100;
+    top:0;
+    left:10px;
+    border:1px solid #ccc;
+}
+#PromotionPageCarouselWrapper #scroller {
+    /*page scroller*/
+    width:10000px;
+}
+
+/*idp*/
+.SL_ItemImage {
+    width:200px;
+}
+.SL_DealDescription {
+    color:#BE1E2D;
+    font-size:35px;
+    margin:0 0 6px 0;
+}
+.SL_PriceQualifier {
+    font-size:12px;
+}
+.SL_OriginalDeal {
+    color:#666;
+    font-size:12px;
+    text-decoration: line-through;
+    margin:0 0 4px 0;
+}
+.SL_ItemTitle {
+    font-weight:normal;
+    font-size:21px;
+}
+.SL_ItemDescription {
+
+}
+.SL_ShareIcon {
+    width:32px;
+    margin-right:12px;
+}
+
+
+
+

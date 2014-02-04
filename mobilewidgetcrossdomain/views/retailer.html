@@ -1,0 +1,40 @@
+<div class="heroPromotion" ng-controller="retailerController" ng-init="init()" style="height:100%;">
+	<img id="pleasewait" src="img/PleaseWait.gif" width="200px;">
+	
+	<div class="SL_adHeader">
+		<img src="//akimages.shoplocal.com/dyn_li/160.160.85.0/retailerlogos/href="http://www.slmobilewidgetdid4.com/#/listingid:{{hotspot.Listings[0].ID}}/storeid:{{storeid}}"" />
+		<!-- <div>{{retailer.PromotionTitle}}</div> -->
+		<p> Deals in your Area:<a href="" class="Show Location"> 60601 <span>(view location)</span></a></p>
+	</div>
+	<div class="SL_adSubHeader">
+		<img src="img/grey-time.png" alt="timer icon">
+		<p>{{retailer.FormattedPromotionPostStartDate}} - {{retailer.FormattedPromotionPostEndDate}}</p>
+		<!-- <p>swipe to view pages</p> -->
+	</div>
+
+	<!-- 	<div class="hero-controls">
+		<div class="prev"  ng-click="goHeroPromoBack()">Prev</div>
+		<div class="next" ng-click="goHeroPromoForward()" >Next</div>
+	</div> -->
+
+	<div id="PromotionPageCarouselWrapper" ng-iscroll="wrapper-hero">
+	    <div id="scroller" >
+	        <div ng-repeat="page in pages" style="float:left;">
+				<img class="hero-promoImage" id="heropromo_{{page.ID}}"  src="{{page.ImageLocation}}" usemap="#pagemap_{{page.ID}}"/>
+				<map id="pagemap_{{page.ID}}" name="pagemap_{{page.ID}}">
+							  <area shape="{{hotspot.ShapeString}}" coords="{{hotspot.adjcoordinates}}" href="http://www.slmobilewidgetdid4.com/#/listingid:{{hotspot.Listings[0].ID}}/storeid:{{storeid}}/retailerid:{{retailer.RetailerID}}/promotioncode:{{retailer.PromotionCode}}"  ng-repeat="hotspot in page.HotSpots" style="background-color:red;" alt="test">
+				</map>
+				<div ng-switch on="{{page.drawHotSpots}}">
+				    <div ng-switch-when="0">
+				    </div>
+				    <div ng-switch-default>
+						
+				    </div>
+				</div>
+	        </div>
+	    </div>
+	</div>
+	
+	<div id="noadds" style="display:none;">Sorry no adds available for store</div>
+
+</div>

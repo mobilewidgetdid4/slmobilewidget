@@ -1,0 +1,11 @@
+html,
+body {
+    margin: 0; padding: 0; border-width: 0; height: 100%;
+    overflow: hidden;
+    font-family:arial, sans-serif;
+    font-size:11px;
+}
+a {
+	color:#478D48;
+	text-decoration:none;
+}

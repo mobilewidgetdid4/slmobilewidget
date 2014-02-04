@@ -1,0 +1,20 @@
+<div class="itemDetail" ng-controller="listingDetailController" ng-init="init()">
+	<br/><br/><br/>
+	<div class="SL_BackHeader">
+		<a href="http://www.slmobilewidgetdid4.com/#/retailerid:{{retailerid}}/promotioncode:{{promotioncode}}/storeid:{{storeid}}"> &laquo; go back</a>
+	</div>
+	<img class="SL_ItemImage" src="{{listing.ImageLocation}}" />
+
+	<p class="SL_DealDescription">
+		{{listing.Deal}}
+		<span class="SL_PriceQualifier">{{listing.PriceQualifier}}</span>
+	</p>
+	<p class="SL_OriginalDeal">{{listing.OriginalDeal}}</p>
+	<h1 class="SL_ItemTitle">{{listing.Title}}</h1>
+	<p class="SL_ItemDescription">{{listing.Description}}</p>
+	<div class="SL_ItemShare">
+		<a href="fb-share">FB</a>
+		<a href="email-share">Email</a>
+	</div>
+
+</div>
