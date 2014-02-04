@@ -1,3 +1,7 @@
+#hero-promotion {
+    position:absolute;
+    background:#F3F3F3;
+}
 #CarouselWrapper {
     position: relative;
     width: 200px;
@@ -8,84 +12,76 @@
     width:120px;
     float:left;
 }
+#closeBtn {
+    position:absolute;
+    top:6px;
+    left:2px;
+    height:18px;
+    width:18px;
+    background:url(../img/Close.png) no-repeat top left;
+    overflow:hidden;
+    text-indent:-99px;
+    cursor:pointer;
 
+}
 #scroller {
     height: 100%;
     position:relative;
 }
-
-/*.carousel-control {
-    background-color: transparent;
-    background-image: url("../img/MeijerWidget_Sprite.png");
-    background-repeat: no-repeat;
-    border: medium none;
-    border-radius: 0 0 0 0;
-    height: 34px;
-    opacity: 1;
-    outline: medium none;
-    overflow: hidden;
-    text-indent: -99px;
-    width: 34px;
-    position:absolute;
-    cursor: pointer;
-    top:51px;
-    z-index: 102;
-    }
-.prev {
-    float:left;
-    cursor: pointer;
-}
-.next {
-    float:right;
-    cursor: pointer;
-}
-.carousel-control:hover {
-    opacity:0.6;
-}
-*/
-
-.retailer_logo {
+.SL_retailer_logo {
     background-position: center center;
     background-repeat: no-repeat;
-    height:40px;
     background-size: contain;
+}
+#scroller .SL_retailer_logo {
+    height:40px;
     margin: 5px 10px;
     width: 80px;
     cursor: pointer;
 }
-
-.controls{
+.SL_adHeader {
+    height:30px;
+    overflow:hidden;
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    background:white;
+}
+.SL_adHeader img {
+    max-width:80px;
+    max-height:20px;
+    float:left;
+    margin:5px 10px 5px 30px;   
+}
+.SL_adHeader p {
+    float:left;
+    margin:0;
+    line-height:30px;
+}
+.SL_adHeader a span {
+    font-size:9px;
+}
+.SL_adSubHeader {
+    height:20px;
+}
+.SL_adSubHeader p {
+    margin:0;
+    line-height:20px;
+}
+.controls {
     width:300px;
 }
-
-.hero-controls
-{
-    postion:absolute;
-    width:300px;
-    heigh:25px;
-    top:0px;
-    z-index: 100;
-}
-
-
-
-.heroPromotion{
-    postion:absolute;
-    line-height: 20px;    
-}
-
-#PromotionPageCarouselWrapper{
+#PromotionPageCarouselWrapper {
     position: relative;
     width: 300px;
     z-index: 100;
-    top:20px;
+    top:0;
+    left:10px;
+    border:1px solid #ccc;
+}
+#PromotionPageCarouselWrapper #scroller {
+    width:10000px;
 }
 
 
 
-/*mike styles*/
-#hero-promotion {
-    position:absolute;
-    height:500px;
-    background:red;
-}
+

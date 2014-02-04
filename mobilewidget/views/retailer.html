@@ -1,18 +1,20 @@
 <div class="heroPromotion" ng-controller="retailerController" ng-init="init()" style="height:100px;">
 	<img id="pleasewait" src="img/PleaseWait.gif" width="200px;">
-	<br/>
 	
-	<div class=""  style="background-image:url(http://akimages.shoplocal.com/dyn_li/50.50.85.0/retailerlogos/{{retailer.PRetailerLogoLocation}});" ></div>
-	
-	<div>{{retailer.PromotionTitle}}</div>
-	
-	<div>{{retailer.PromotionStartDateString}} - {{retailer.PromotionEndDateString}}"</div>
+	<div class="SL_adHeader">
+		<img src="http://akimages.shoplocal.com/dyn_li/160.160.85.0/retailerlogos/{{retailer.PRetailerLogoLocation}}" />
+		<!-- <div>{{retailer.PromotionTitle}}</div> -->
+		<p> Deals in your Area:<a href="" class="Show Location"> 60601 <span>(view location)</span></a></p>
+	</div>
+	<div class="SL_adSubHeader">
+		<p>{{retailer.PromotionStartDateString}} - {{retailer.PromotionEndDateString}}"</p>
+		<!-- <p>swipe to view pages</p> -->
+	</div>
 
-	<a href="" class="Show Location">show location</a>
-	<div class="hero-controls">
+	<!-- 	<div class="hero-controls">
 		<div class="prev"  ng-click="goHeroPromoBack()">Prev</div>
 		<div class="next" ng-click="goHeroPromoForward()" >Next</div>
-	</div>
+	</div> -->
 
 	<div id="PromotionPageCarouselWrapper" ng-iscroll="wrapper-hero">
 	    <div id="scroller">
