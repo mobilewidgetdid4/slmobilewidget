@@ -1,7 +1,3 @@
-#hero-promotion {
-    position:absolute;
-    background:#F3F3F3;
-}
 #CarouselWrapper {
     position: relative;
     width: 200px;
@@ -40,6 +36,10 @@
     margin: 5px 10px;
     width: 80px;
     cursor: pointer;
+}
+#hero-promotion {
+    position:absolute;
+    background:#F3F3F3;
 }
 .SL_adHeader {
     height:30px;
@@ -92,7 +92,38 @@
     border:1px solid #ccc;
 }
 #PromotionPageCarouselWrapper #scroller {
+    /*page scroller*/
     width:10000px;
+}
+
+/*idp*/
+.SL_ItemImage {
+    width:200px;
+}
+.SL_DealDescription {
+    color:#BE1E2D;
+    font-size:35px;
+    margin:0 0 6px 0;
+}
+.SL_PriceQualifier {
+    font-size:12px;
+}
+.SL_OriginalDeal {
+    color:#666;
+    font-size:12px;
+    text-decoration: line-through;
+    margin:0 0 4px 0;
+}
+.SL_ItemTitle {
+    font-weight:normal;
+    font-size:21px;
+}
+.SL_ItemDescription {
+
+}
+.SL_ShareIcon {
+    width:32px;
+    margin-right:12px;
 }
 
 

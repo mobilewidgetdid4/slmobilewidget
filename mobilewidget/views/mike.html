@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sample_page_title</title>
+	<style>
+	.SL_ItemImage {
+		width:200px;
+	}
+	.SL_DealDescription {
+		color:#BE1E2D;
+		font-size:35px;
+		margin:0 0 6px 0;
+	}
+	.SL_PriceQualifier {
+		font-size:12px;
+	}
+	.SL_OriginalDeal {
+		color:#666;
+		font-size:12px;
+		text-decoration: line-through;
+		margin:0 0 4px 0;
+	}
+	.SL_ItemTitle {
+		font-weight:normal;
+		font-size:21px;
+	}
+	.SL_ItemDescription {
+
+	}
+	.SL_ShareIcon {
+		width:32px;
+		margin-right:12px;
+	}
+	</style>
+</head>
+<body>
+	
+<div class="itemDetail" ng-controller="detailController" ng-init="init()">
+	<div class="SL_BackHeader">
+		<a href="need_back_link"> &laquo; go back</a>
+	</div>
+	<img class="SL_ItemImage" src="../img/hard_coded_img.png" />
+
+	<p class="SL_DealDescription"> 
+		Buy the Pair only $997
+		<span class="SL_PriceQualifier"> Or Less</span>
+	</p>
+	<p class="SL_OriginalDeal">Used to be $1200</p>
+	<h1 class="SL_ItemTitle">Frigidaire Front Loading Washer with Electronic Control and Electric Dryer with 7.0 Cu. Ft. Capacity</h1>
+	<p class="SL_ItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, sapiente, eveniet, animi ipsum fuga odio fugit iste minima minus suscipit quaerat nihil natus nam libero aut quidem delectus. Repudiandae, molestiae!
+	</p>
+	<div class="SL_ItemShare">
+		<a href="fb-share"><img class="SL_ShareIcon" src="../img/FB_Icon.png" alt="Facebook Share"/></a>
+		<a href="email-share"><img class="SL_ShareIcon" src="../img/Email_Icon.png" alt="Email Share"/></a>
+
+	</div>
+
+</div>
+</body>
+</html>
