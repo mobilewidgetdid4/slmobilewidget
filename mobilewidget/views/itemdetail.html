@@ -1,19 +1,19 @@
-<div class="itemDetail" ng-controller="detailController" ng-init="init()">
-	<a href="need_back_link"> &raquo; go back</a>
-	<img src="img/hard_coded_img.png" />
+<div class="itemDetail" ng-controller="listingDetailController" ng-init="init()">
+	<div class="SL_BackHeader">
+		<a href="need_back_link"> &laquo; go back</a>
+	</div>
+	<img class="SL_ItemImage" src="{{listing.ImageLocation}}" />
 
-	<p class="SL_DealDescription"> 
-		Buy the Pair only $997
-		<span class="SL_PriceQualifier"> Or Less</span>
+	<p class="SL_DealDescription">
+		{{listing.Deal}}
+		<span class="SL_PriceQualifier">{{listing.PriceQualifier}}</span>
 	</p>
-	<p class="SL_OriginalDeal">Used to be $1200</p>
-	<h1 class="SL_ItemTitle">Frigidaire Front Loading Washer with Electronic Control and Electric Dryer with 7.0 Cu. Ft. Capacity</h1>
-	<p class="SL_ItemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, sapiente, eveniet, animi ipsum fuga odio fugit iste minima minus suscipit quaerat nihil natus nam libero aut quidem delectus. Repudiandae, molestiae!
-	</p>
+	<p class="SL_OriginalDeal">{{listing.OriginalDeal}}</p>
+	<h1 class="SL_ItemTitle">{{listing.Title}}</h1>
+	<p class="SL_ItemDescription">{{listing.Description}}</p>
 	<div class="SL_ItemShare">
 		<a href="fb-share">FB</a>
 		<a href="email-share">Email</a>
-
 	</div>
 
 </div>

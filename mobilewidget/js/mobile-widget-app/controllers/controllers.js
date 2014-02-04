@@ -7,28 +7,32 @@ app.config(function($routeProvider) {
                 controller  : 'mainController'
             })
 
-            // route for the about page
+            // route for the retailer page
             .when('/retailer', {
                 templateUrl : 'views/retailer.html',
                 controller  : 'retailerController'
             })
 
-            // route for the about page
+            // route for the retailer page
             .when('/retailer:retailerid', {
                 templateUrl : 'views/retailer.html',
                 controller  : 'retailerController'
             })
-            // route for the about page
+            // route for the retailer page
             .when('/retailer:retailerid/prmotioncode:promotioncode', {
                 templateUrl : 'views/retailer.html',
                 controller  : 'retailerController'
             })
-            // route for the about page
+            // route for the retailer page
             .when('/retailer:retailerid/promotioncode:promotioncode/storeid:storeid', {
                 templateUrl : 'views/retailer.html',
                 controller  : 'retailerController'
             })
-
+            // route for the retailer page
+            .when('/listing:listingid/storeid:storeid', {
+                templateUrl : 'views/itemdetail.html',
+                controller  : 'listingDetailController'
+            })
     });
 
 var retailersToStore = []
@@ -204,12 +208,40 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
                       if(retailerfound.RetailerID == $scope.retailerid)  
                       {
                         $scope.retailer =  retailerfound;
+
+                        var formattedPromotionPostStartDate = new Date(retailerfound.PromotionPostStartDate.match(/\d+/)[0]*1);
+                        var formattedPromotionPostEndDate = new Date(retailerfound.PromotionPostEndDate.match(/\d+/)[0]*1);
+                        var month = formattedPromotionPostStartDate.getMonth()+1;
+                        var day = formattedPromotionPostStartDate.getDate();
+                        if( parseInt(month) < 10)
+                        {
+                            month = "0"+month;
+                        }
+                        if(parseInt(day) < 10)
+                        {
+                            day = "0"+day;
+                        }
+
+                        $scope.retailer.FormattedPromotionPostStartDate = month+ "/" +day;
+
+                        var month = formattedPromotionPostEndDate.getMonth()+1;
+                        var day = formattedPromotionPostEndDate.getDate();
+                        if( month < 10)
+                        {
+                            month = "0"+formattedPromotionPostEndDate.getMonth()+1;
+                        }
+                        if(day < 10)
+                        {
+                            day = "0"+formattedPromotionPostEndDate.getDate();
+                        }
+
+                        $scope.retailer.FormattedPromotionPostEndDate = month+ "/" +day;
                       }
                 });
 
                 var listingsExist = 0;
 
-                $http.jsonp('http://api2.shoplocal.com/retail/42ace9ccb488c1dd/2013.1/json/fullpromotionpages?storeid='+$scope.storeid+'&promotioncode='+$scope.promotioncode+'&callback=JSON_CALLBACK').success(function(data) 
+                $http.jsonp('http://api2.shoplocal.com/retail/5369d0c743bd59c2/2013.1/json/fullpromotionpages?storeid='+$scope.storeid+'&promotioncode='+$scope.promotioncode+'&callback=JSON_CALLBACK').success(function(data) 
                 {
                     angular.forEach(data.Results, function(page, index)
                     {
@@ -282,5 +314,49 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
             $scope.currentHeroSlide = $scope.currentHeroSlide - 1; 
             $scope.myScroll['wrapper-hero'].scrollToPage('prev', 0);
         }
+    };
+
+    $scope.openListingDetail = function(listingid){
+        if(listingid)
+        {
+            $http.jsonp('http://api2.shoplocal.com/retail/5369d0c743bd59c2/2013.1/json/listing?listingid='+$scope.listingid+'&imagesize=400&storeID='+$scope.storeid+'&callback=JSON_CALLBACK').success(function(data) {
+                if(data.Results.length > 0)
+                {
+                    $scope.listing = data.Results;
+                    itemDetail = document.getElementById("itemDetail");
+                    itemDetail.show();
+                }
+                else
+                {
+                    itemDetail.hide();
+                }
+
+            }).error(function(error) {
+     
+            });
+        }
+    }
+
+});
+
+
+//Item Detail controller that loads listing detail based on listingid.
+app.controller('listingDetailController', function($scope, $route, $routeParams, $http) {
+
+    $scope.listingid = $routeParams.listingid.replace(":","");
+    $scope.storeid = $routeParams.storeid.replace(":","");
+
+    $scope.init = function() 
+    {        
+        if($scope.listingid)
+        {
+            $scope.listingid = $scope.listingid.replace("id","");
+            $http.jsonp('http://api2.shoplocal.com/retail/5369d0c743bd59c2/2013.1/json/listing?listingid='+$scope.listingid+'&imagesize=400&storeID='+$scope.storeid+'&callback=JSON_CALLBACK').success(function(data) {
+                $scope.listing = data.Results;
+            }).error(function(error) {
+         
+            });            
+        }
+
     };
 });
