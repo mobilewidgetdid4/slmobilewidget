@@ -14,7 +14,7 @@
 #closeBtn {
     position:absolute;
     top:6px;
-    left:2px;
+    right:2px;
     height:18px;
     width:18px;
     background:url(../img/Close.png) no-repeat top left;
@@ -56,7 +56,7 @@
     max-width:80px;
     max-height:20px;
     float:left;
-    margin:5px 10px 5px 30px;   
+    margin:5px 10px;   
 }
 .SL_adHeader p {
     float:left;
