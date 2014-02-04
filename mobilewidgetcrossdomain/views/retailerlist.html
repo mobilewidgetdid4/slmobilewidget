@@ -8,9 +8,9 @@
 	        <div id="scroller" style="width:{{scrollerWidth}};">
                 <div ng-repeat="slide in slides" style="float:left;">
 					<div ng-repeat="retailer in slide" style="float:left;">
-						<div class="action-retailer SL_retailer_logo"  style="background-image:url(//akimages.shoplocal.com/dyn_li/160.160.85.0/retailerlogos/{{retailer.PRetailerLogoLocation}});" ng-click="openHeroPromotion($index,retailer.RetailerID)"
+						<div class="action-retailer SL_retailer_logo"  style="background-image:url(//akimages.shoplocal.com/dyn_li/160.160.85.0/retailerlogos/{{retailer.PRetailerLogoLocation}});" 
 						data-retailerid="{{retailer.RetailerID}}"  data-index="{{$index}}"
-						data-heropromocode = {{retailer.PromotionCode}} data-storeid = {{retailer.StoreID}}
+						data-heropromocode = {{retailer.PromotionCode}} data-storeid = {{retailer.StoreID}} 
 						ng-click = "openPromotionPage(retailer.RetailerID, retailer.StoreID, retailer.PromotionCode)"
 						></div>
 					</div>

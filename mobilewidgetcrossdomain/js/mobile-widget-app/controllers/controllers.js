@@ -179,18 +179,18 @@ app.controller("mainController", function($scope, $http){
     }
 
     $scope.openPromotionPage = function(retailerid, storeid, promotioncode) {
-        $scope.retailerid = retailerid.replace(":","");
-        $scope.storeid = storeid.replace(":","");
-        $scope.promotioncode = promotioncode.replace(":","");
+        //$scope.retailerid = retailerid.replace(":","");
+        //$scope.storeid = storeid.replace(":","");
+        //$scope.promotioncode = promotioncode.replace(":","");
         $scope.pages = [];
 
         $scope.retailer = null;
 
-        if($scope.retailerid && $scope.retailers.length)
+        if(retailerid && $scope.retailers.length)
             {
 
                 angular.forEach($scope.retailers, function(retailerfound, index){
-                      if(retailerfound.RetailerID == $scope.retailerid)  
+                      if(retailerfound.RetailerID == retailerid)  
                       {
                         $scope.retailer =  retailerfound;
 
@@ -226,12 +226,12 @@ app.controller("mainController", function($scope, $http){
 
                 var listingsExist = 0;
 
-                if(!$scope.promotioncode)
+                if(!promotioncode)
                 {      
                     $scope.promotioncode = $scope.retailer.PromotionCode;
                 }
                 //Get the promotion pages for the retailer id requested.
-                $http.jsonp('http://api2.shoplocal.com/retail/5369d0c743bd59c2/2013.1/json/fullpromotionpages?storeid='+$scope.storeid+'&promotioncode='+$scope.promotioncode+'&callback=JSON_CALLBACK').success(function(data) 
+                $http.jsonp('http://api2.shoplocal.com/retail/5369d0c743bd59c2/2013.1/json/fullpromotionpages?storeid='+storeid+'&promotioncode='+promotioncode+'&callback=JSON_CALLBACK').success(function(data) 
                 {
                     angular.forEach(data.Results, function(page, index)
                     {

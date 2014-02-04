@@ -294,7 +294,7 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
                         noadds.style.display = 'block';                    
                     }
 
-                    $scope.scrollerWidth = 320 * $scope.pages.length;
+                    $scope.scrollerWidthHero = 320 * $scope.pages.length;
 
                     parent.document.getElementById("closeBtn").style.display = 'block';
 
