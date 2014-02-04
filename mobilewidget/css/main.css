@@ -24,8 +24,10 @@
     cursor:pointer;
 
 }
-#scroller {
+#CarouselWrapper #scroller {
+    /*banner scroller*/
     height: 100%;
+    width:10000px;
     position:relative;
 }
 .SL_retailer_logo {
