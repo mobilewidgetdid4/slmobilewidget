@@ -294,7 +294,11 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
                         noadds.style.display = 'block';                    
                     }
 
-                    $scope.scrollerWidth = 300 * $scope.pages.length;
+                    $scope.scrollerWidth = 320 * $scope.pages.length;
+
+                    parent.document.getElementById("closeBtn").style.display = 'block';
+
+
 
                 }).error(function(error) {
          
@@ -304,9 +308,6 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
         }).error(function(error) {
      
         });
-
-
-
     };
 
     $scope.goHeroPromoForward = function () {
@@ -337,6 +338,8 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
                     $scope.listing = data.Results;
                     itemDetail = document.getElementById("itemDetail");
                     itemDetail.show();
+                    //hide the close button on the container page    
+                    parent.document.getElementById("closeBtn").style.display = 'none';
                 }
                 else
                 {
@@ -366,6 +369,7 @@ app.controller('listingDetailController', function($scope, $route, $routeParams,
             $scope.listingid = $scope.listingid.replace("id","");
             $http.jsonp('http://api2.shoplocal.com/retail/5369d0c743bd59c2/2013.1/json/listing?listingid='+$scope.listingid+'&imagesize=400&storeID='+$scope.storeid+'&callback=JSON_CALLBACK').success(function(data) {
                 $scope.listing = data.Results;
+                parent.document.getElementById("closeBtn").style.display = 'none';
             }).error(function(error) {
          
             });            
