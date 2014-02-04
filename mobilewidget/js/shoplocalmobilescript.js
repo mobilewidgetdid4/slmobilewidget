@@ -108,9 +108,15 @@ var _timer=setInterval(function()
 			createCloseBtn();
 
 			$heroPromotion.delegate("#closeBtn", "click", function() {
-				$heroPromotion.hide();
+				//$heroPromotion.hide();
+				heroPromotion.slideUp("slow", function(){});
 			});
-			$heroPromotion.show();
+
+			$heroPromotion.slideDown("slow",function(){
+
+			});
+
+			//$heroPromotion.show();
 		})
 	}
 

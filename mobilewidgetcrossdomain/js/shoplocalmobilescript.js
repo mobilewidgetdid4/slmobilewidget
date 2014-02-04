@@ -10,7 +10,7 @@ window.jq$ = jQuery.noConflict(true);
 
 var $ = window.jq$;
 
-$('head').append('<link rel="stylesheet" type="text/css" href="http://www.slmobilewidgetdid4.com/css/main.css">');
+$('head').append('<link rel="stylesheet" type="text/css" href="http://localhost/css/main.css">');
 
 
 //Get the query params
@@ -48,7 +48,7 @@ var params = parseQuery( queryString );
 //Create the mobile widget iframe. This contains the angular view for retailer list.
 var params = parseQuery(queryString);
 var $newdiv1 = $( "<iframe id='mobilewidget'/>" );
-$newdiv1.attr('src', 'http://www.slmobilewidgetdid4.com');
+$newdiv1.attr('src', 'http://localhost');
 $newdiv1.css( "height", params['height']+"px");
 $newdiv1.attr('frameBorder','0');
 $newdiv1.css( "width", params['width']+"px");
@@ -58,7 +58,7 @@ $( "body" ).prepend($newdiv1);
 
 
 //Create the div for hero promotion.
-var $heroPromotion = $( "<div id='hero-promotion'/>" );
+/*var $heroPromotion = $( "<div id='hero-promotion'/>" );
 $heroPromotion.css( "width", params['width']+"px");
 $heroPromotion.css("top",params['height']+"px");
 $heroPromotion.css("left",params['left']+"px");
@@ -81,7 +81,7 @@ $mobilewidgetheropromo.css( "100%");
 $mobilewidgetheropromo.css("top",params['top']+"px");
 $mobilewidgetheropromo.css("left",params['left']+"px");
 ($heroPromotion).append($mobilewidgetheropromo);
-
+*/
 var iframe = document.getElementById('mobilewidget');
 iframe = iframe.contentWindow || iframe.contentDocument;
 if (iframe.document) iframe = iframe.document;
@@ -101,25 +101,22 @@ var _timer=setInterval(function()
 			var storeid = e.target.getAttribute("data-storeid");
 			var promotioncode = e.target.getAttribute("data-heropromocode");
 			
-			$heroPromotion.html();
-			$mobilewidgetheropromo.attr('src', 'http://www.slmobilewidgetdid4.com/#/retailer:'+retailerid+"/promotioncode:"+promotioncode+"/storeid:"+storeid);
-			
-			$heroPromotion.html($mobilewidgetheropromo);
-			createCloseBtn();
+			alert('caught this');
 
-			$heroPromotion.delegate("#closeBtn", "click", function() {
-				$heroPromotion.hide();
-			});
-			$heroPromotion.show();
+			//$heroPromotion.html();
+			//$mobilewidgetheropromo.attr('src', 'http://localhost/#/retailer:'+retailerid+"/promotioncode:"+promotioncode+"/storeid:"+storeid);
+			
+			//$heroPromotion.html($mobilewidgetheropromo);
+			//createCloseBtn();
+
+			//$heroPromotion.delegate("#closeBtn", "click", function() {
+			//	$heroPromotion.hide();
+			//});
+			//$heroPromotion.show();
+
+			//expand the size of the iframe mobilewidget
+
 		})
 	}
 
 }, 1000)
-
-/*
-	var iframe = document.getElementById('mobilewidget');
-	var b = $("#mobilewidget").contents().find('body');
-	b.contents().on("click",".action-retailer",function(e){
-					alert('hello');
-				})
-*/

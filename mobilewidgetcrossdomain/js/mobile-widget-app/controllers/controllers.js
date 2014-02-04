@@ -177,6 +177,118 @@ app.controller("mainController", function($scope, $http){
             $scope.initialLoad = false;
         }
     }
+
+    $scope.openPromotionPage = function(retailerid, storeid, promotioncode) {
+        $scope.retailerid = retailerid.replace(":","");
+        $scope.storeid = storeid.replace(":","");
+        $scope.promotioncode = promotioncode.replace(":","");
+        $scope.pages = [];
+
+        $scope.retailer = null;
+
+        if($scope.retailerid && $scope.retailers.length)
+            {
+
+                angular.forEach($scope.retailers, function(retailerfound, index){
+                      if(retailerfound.RetailerID == $scope.retailerid)  
+                      {
+                        $scope.retailer =  retailerfound;
+
+                        var formattedPromotionPostStartDate = new Date(retailerfound.PromotionPostStartDate.match(/\d+/)[0]*1);
+                        var formattedPromotionPostEndDate = new Date(retailerfound.PromotionPostEndDate.match(/\d+/)[0]*1);
+                        var month = formattedPromotionPostStartDate.getMonth()+1;
+                        var day = formattedPromotionPostStartDate.getDate();
+                        if( parseInt(month) < 10)
+                        {
+                            month = "0"+month;
+                        }
+                        if(parseInt(day) < 10)
+                        {
+                            day = "0"+day;
+                        }
+
+                        $scope.retailer.FormattedPromotionPostStartDate = month+ "/" +day;
+
+                        var month = formattedPromotionPostEndDate.getMonth()+1;
+                        var day = formattedPromotionPostEndDate.getDate();
+                        if( month < 10)
+                        {
+                            month = "0"+formattedPromotionPostEndDate.getMonth()+1;
+                        }
+                        if(day < 10)
+                        {
+                            day = "0"+formattedPromotionPostEndDate.getDate();
+                        }
+
+                        $scope.retailer.FormattedPromotionPostEndDate = month+ "/" +day;
+                      }
+                });
+
+                var listingsExist = 0;
+
+                if(!$scope.promotioncode)
+                {      
+                    $scope.promotioncode = $scope.retailer.PromotionCode;
+                }
+                //Get the promotion pages for the retailer id requested.
+                $http.jsonp('http://api2.shoplocal.com/retail/5369d0c743bd59c2/2013.1/json/fullpromotionpages?storeid='+$scope.storeid+'&promotioncode='+$scope.promotioncode+'&callback=JSON_CALLBACK').success(function(data) 
+                {
+                    angular.forEach(data.Results, function(page, index)
+                    {
+                            page.ImageLocation = page.ImageLocation.replace("200","600");
+                            if(page.HotSpots.length > 0 )
+                            {
+                                angular.forEach(page.HotSpots, function(hotspot, index)
+                                {
+                                    if(hotspot.Listings.length >0)
+                                    {
+                                        listingsExist = 1;
+
+                                        var hotspotShape = (hotspot.Shape === 1) ? "circle" : (hotspot.Shape === 2) ? "polygon" : "rect";
+                                        hotspot.ShapeString = hotspotShape;
+
+                                        var coordinates = "";
+                                        angular.forEach(hotspot.Coordinates,function(coordinate, index)
+                                        {
+                                            coordinates = coordinates + ","+ Math.round(coordinate*0.15);
+                                        });
+
+                                        coordinates = coordinates.substring(1);
+                                        hotspot.adjcoordinates = coordinates;
+                                    }
+                                });
+                            }
+
+                            page.drawHotSpots = listingsExist;
+
+                            $scope.pages.push(page);
+                    });
+
+
+
+                    $scope.totalHeroslides = $scope.pages.length; 
+
+                    var pleasewait = document.getElementById("pleasewait");
+                    pleasewait.style.display='none';
+
+                    if($scope.pages.length == 0)
+                    {
+                        noadds.style.display = 'block';                    
+                    }
+
+                    $scope.scrollerWidth = 300 * $scope.pages.length;
+
+                    var promocontent = document.getElementById("promocontent")
+
+
+
+                }).error(function(error) {
+         
+                });
+            }
+
+    }
+
 });
 
 //Retailer controller that loads promotions based on the retailer.
