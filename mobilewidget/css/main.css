@@ -18,8 +18,7 @@
     height: 30px;
     width: 30px;
     background: url(../img/Close.png) no-repeat top left;
-    background-size: 18px 18px;
-    background-position: 8px 7px;
+    background-size: contain;
     overflow: hidden;
     text-indent: -99px;
     cursor: pointer;
@@ -107,6 +106,7 @@
 }
 .SL_BackHeader {
     padding:10px 0;
+    font-size:12px;
 }
 .SL_ItemImage {
     width: 160px;
