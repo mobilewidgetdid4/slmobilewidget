@@ -29,7 +29,7 @@ app.config(function($routeProvider) {
                 controller  : 'retailerController'
             })
             // route for the retailer page
-            .when('/listing:listingid/storeid:storeid', {
+            .when('/listing:listingid/storeid:storeid/retailerid:retailerid/promotioncode:promotioncode', {
                 templateUrl : 'views/itemdetail.html',
                 controller  : 'listingDetailController'
             })
@@ -241,6 +241,7 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
 
                 var listingsExist = 0;
 
+                //Get the promotion pages for the retailer id requested.
                 $http.jsonp('http://api2.shoplocal.com/retail/5369d0c743bd59c2/2013.1/json/fullpromotionpages?storeid='+$scope.storeid+'&promotioncode='+$scope.promotioncode+'&callback=JSON_CALLBACK').success(function(data) 
                 {
                     angular.forEach(data.Results, function(page, index)
@@ -286,6 +287,8 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
                         noadds.style.display = 'block';                    
                     }
 
+                    $scope.scrollerWidth = 300 * $scope.pages.length;
+
                 }).error(function(error) {
          
                 });
@@ -317,6 +320,8 @@ app.controller('retailerController', function($scope, $route, $routeParams, $htt
     };
 
     $scope.openListingDetail = function(listingid){
+        alert('hello');
+        
         if(listingid)
         {
             $http.jsonp('http://api2.shoplocal.com/retail/5369d0c743bd59c2/2013.1/json/listing?listingid='+$scope.listingid+'&imagesize=400&storeID='+$scope.storeid+'&callback=JSON_CALLBACK').success(function(data) {
@@ -345,7 +350,8 @@ app.controller('listingDetailController', function($scope, $route, $routeParams,
 
     $scope.listingid = $routeParams.listingid.replace(":","");
     $scope.storeid = $routeParams.storeid.replace(":","");
-
+    $scope.retailerid = $routeParams.retailerid.replace(":","");
+    $scope.promotioncode = $routeParams.promotioncode.replace(":","");
     $scope.init = function() 
     {        
         if($scope.listingid)
